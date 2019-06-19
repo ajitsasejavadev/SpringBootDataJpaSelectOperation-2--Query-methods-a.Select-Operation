@@ -1,12 +1,13 @@
 package com.app.runner;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.app.model.Product;
 import com.app.repo.ProductRepository;
-import com.app.repo.ProductRepository.MyData;
-import com.app.repo.ProductRepository.MyView;
 
 @Component
 public class ProductRunner implements CommandLineRunner {
@@ -17,13 +18,30 @@ public class ProductRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		repo.findByProdCost(5.5, MyData.class)
-		.forEach(p->System.out.println(p.getProdCode()+","+p.getProdName()));
+
+		repo.getMyData() 
+		.forEach(System.out::println);
+		System.out.println("----1-------------------------------------------");
+
+		repo.getCostOnly() 
+		.forEach(System.out::println);
+		System.out.println("-----2------------------------------------------");
+
+		repo.getInfo() 
+		.forEach(System.out::println);
+		System.out.println("------3-----------------------------------------");
+
+		repo.getNewData(5, 9.9)
+		.forEach(System.out::println);
+		System.out.println("-------4----------------------------------------");
+
+		/*
+		 * repo.getMyDataName(3, 8.8) .forEach(System.out::println);
+		 */
 		
-		repo.findByProdId(1, MyView.class)
-		.forEach(s->System.out.println(s.getProdCost()));
+		/*
+		 * repo.getMyData() .forEach(System.out::println);
+		 */
 	}
-	
-	
 
 }
