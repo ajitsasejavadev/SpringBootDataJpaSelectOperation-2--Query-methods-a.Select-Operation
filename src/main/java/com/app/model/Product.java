@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name ="prod_tab2")
-
 public class Product {
 
 	@Id
@@ -82,6 +81,12 @@ public class Product {
 
 	public void setProdVenodr(String prodVenodr) {
 		this.prodVenodr = prodVenodr;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [prodId=" + prodId + ", prodName=" + prodName + ", prodCode=" + prodCode + ", prodCost="
+				+ prodCost + ", prodModel=" + prodModel + ", prodVenodr=" + prodVenodr + "]";
 	}
 
 	

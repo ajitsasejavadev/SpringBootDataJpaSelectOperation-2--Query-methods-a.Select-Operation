@@ -32,13 +32,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	
 	  //------B:Named Parameters :hyd, :a, :empId -----------
 	  
-	 /*
-	 * @Query("Select p  from com.app.model.Product p where p.prodId:a or p.prodCost:b "
-	 * ) public List<Product> getMyDataName(Integer a, Double b); 
-	 */
+	 
+	  @Query("Select p  from com.app.model.Product p where p.prodId=:a or p.prodCost<:b " ) 
+	  public List<Product> getMyDataName(Integer a, Double b); 
+	 
 
-	/*
-	 * @Query("Select p from Product p where p.prodId in:a orderBy p.orodId desc")
-	 * public List<Product> getMyData(List<Integer> a);
-	 */
+	
+	 @Query("Select p from Product p where p.prodId in:a order By p.prodId desc")
+	 public List<Product> getMyData(List<Integer> a);
+	 
 }
